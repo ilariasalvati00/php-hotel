@@ -62,19 +62,23 @@
     </thead>
     <tbody>
     <?php
+        $vote = $_GET["vote"] ?? "0";
+        $vote = intval($vote);
         foreach ($hotels as $elemento) {
-            echo "<tr>";
-            echo "<td>" . $elemento['name'] . "</td>";
-            echo "<td>" . $elemento['description']. "</td>";
-            if ($elemento["parking"] == true){
-                echo "<td>Yes</td>";
+            if ($elemento["vote"] >= $vote){
+                echo "<tr>";
+                echo "<td>" . $elemento['name'] . "</td>";
+                echo "<td>" . $elemento['description']. "</td>";
+                if ($elemento["parking"] == true){
+                    echo "<td>Yes</td>";
+                }
+                else{
+                    echo "<td>No</td>";
+                }
+                echo "<td>" . $elemento['vote']. "</td>";
+                echo "<td>" . $elemento['distance_to_center']. "</td>";
+                echo "</tr>";
             }
-            else{
-                echo "<td>No</td>";
-            }
-            echo "<td>" . $elemento['vote']. "</td>";
-            echo "<td>" . $elemento['distance_to_center']. "</td>";
-            echo "</tr>";
         }
     ?> 
     </tbody>
