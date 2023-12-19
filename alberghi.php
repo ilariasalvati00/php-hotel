@@ -47,16 +47,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Parking</th>
+        <th scope="col">Vote</th>
+        <th scope="col">Distance to center</th>
+        </tr>
+    </thead>
+    <tbody>
     <?php
         foreach ($hotels as $elemento) {
-            echo "<p>Nome dell'hotel: " . $elemento['name'] . "</p>";
-            echo "<p>Descrizione: " . $elemento['description']. "</p>";
-            echo "<p>Parcheggio disponibile: " . $elemento['parking']. "</p>";
-            echo "<p>Voto: " . $elemento['vote']. "</p>";
-            echo "<p>Distanza dal centro: " . $elemento['distance_to_center']. "</p>";
+            echo "<tr>";
+            echo "<td>" . $elemento['name'] . "</td>";
+            echo "<td>" . $elemento['description']. "</td>";
+            if ($elemento["parking"] == true){
+                echo "<td>Yes</td>";
+            }
+            else{
+                echo "<td>No</td>";
+            }
+            echo "<td>" . $elemento['vote']. "</td>";
+            echo "<td>" . $elemento['distance_to_center']. "</td>";
+            echo "</tr>";
         }
-    ?>
+    ?> 
+    </tbody>
 </body>
 </html>
